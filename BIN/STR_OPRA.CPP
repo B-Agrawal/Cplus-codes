@@ -1,0 +1,46 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+class string
+{ char str[35],str1[25],str2[25];
+  public:
+  void opretn();
+  };
+void string::opretn()
+{cout<<"\n enter string :  " ;
+ gets(str);
+ cout<<"\n ur original string :\n\t";
+ puts(str);
+ int i,j,k;
+ for(i=0;str[i]!='\0';i++); j=i;
+ cout<<"\n string lenth \t"<<j;
+ cout<<"\n";
+   int tmp;
+ for(i=0;i<j/2;i++)
+ {tmp=str[i];
+  str[i]=str[j-i-1];
+  str[j-i-1]=tmp;}
+   cout<<"\n reversed str \t : "<<str;
+
+ for(i=0;i<j;i++)
+ {str1[i]=str[i];}
+ str1[j]='\0';
+ cout<<"\n copied str : "<<str1;
+  for(i=0;i<j/2;i++)
+   {tmp=str[i];
+   str[i]=str[j-i-1];
+   str[j-i-1]=tmp;
+   }
+   for(i=0;str[i]!='\0';i++)
+   str2[i]=str[i];
+   for(k=0;str1[k]!='\0';k++)
+   str2[i+k]=str1[k];
+   str2[i+k]='\0';
+  cout<<"\n concateneted string :\t" <<str2;
+ }
+ void main()
+ {clrscr();
+ string s;
+ s.opretn();
+ getch();
+ }

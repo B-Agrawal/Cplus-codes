@@ -1,0 +1,238 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<process.h>
+#include<fstream.h>
+void bookentry();
+void bookdetail();
+void welcome();
+void purchase();
+void choice();
+//******************************************************************************************
+//   CLASS BOOK
+//*******************************************************************************
+
+class book
+{int bno,nob;
+ char name[20];
+ char pub[20];
+ char writer[20];
+ public:
+ void getdata();
+ void putdata();
+ }bb;
+//************************************************************************************
+ // customer class
+//***********************************************************************************
+
+class customer
+{ int cnob;
+ char custname[20];
+ public:
+  void gatdata();
+  void patdata();
+  void bill();
+  }cc;
+//***********************************************************************************
+ // book functions
+//**********************************************************************************
+
+void book::getdata()
+{
+ cin>>bno;
+   gets(name);
+   gets(pub);
+  gets(writer);
+   cin>>nob;
+ }
+void book::putdata()
+{
+// cout<<"\n\n\n************************* B O O K - D E T A I L S *****************************\n\n\n";
+
+//  cout<<"\nbook name\tpublisher name\t\twriter name\tno of copies availble\n";
+ cout<<bno<<"\t"<<name<<"\t\t"<<pub<<"\t\t\t"<<writer<<"\t\t"<<nob<<'\n';
+ }
+
+//************************************************************************************\
+//     customer functios
+//************************************************************************************
+
+void customer::gatdata()
+{  cout<<"\n enter cust name\t";
+   gets(custname);
+   cout<<"\n enter no of books purchased";
+   cin>>cnob;
+ bill();
+
+}
+void customer::bill()
+{
+   clrscr();
+    char b;
+  //cout<<"|n do u wnt to see bill(y/n)";
+   // cin>>b;
+   //if(b=='y')
+  // {
+    clrscr();
+ int i;
+//*****************UPPR LINE*******************************
+
+for( i=0;i<=60;i++)
+   cout<<'-';
+//******************** LEFT RIGHT LINE**********************
+ int k=0;
+ gotoxy(1,2);
+  do{
+    cout<<'|';
+    for( i=0;i<59;i++)
+    {cout<<' ';    }
+    cout<<'|'; cout<<'\n'; k++;
+      }while(k<=20);
+
+//************** LAST LINE *********************************
+
+   for( i=0;i<=60;i++)
+   cout<<'-';
+//**************(***MID LINE*********************************
+    gotoxy(2,8);
+    for(i=0;i<59;i++)
+     cout<<"-";
+//************* SHOP NAME LINE & OTHER DETAILS *****************************
+    gotoxy(20,2);
+    cout<<"HINDUSTAAN BOOK DEPOT";
+    gotoxy(44,4);
+    cout<<"DATE :__ /__ /__ ";
+    gotoxy(3,5);
+    cout<<"NAME : _____________________________________";
+    gotoxy(3,7);
+    cout<<"PH.NO: _____________________________________";
+    gotoxy(3,9);
+    cout<<"ITEM NAME\t\t n.of.item\tCOST\t   TOTALRATE";
+//***************MID LINE**************************************
+    gotoxy(2,10);
+    for(i=0;i<59;i++)
+       cout<<"-";
+ //****************LAST LINE**************************************
+    gotoxy(2,21);
+  for(i=0;i<59;i++)
+     cout<<"-";
+
+//***************** MID VRTICALS LINES*************************
+     int a=9;
+    for(i=0;i<14;i++)
+    { gotoxy(25,a);
+     cout<<'|'<<'\n';
+       gotoxy(35,a);
+	  cout<<'|'<<'\n';
+	gotoxy(48,a);
+	     cout<<'|'<<'\n';
+	 a++;
+     }
+
+   gotoxy(7,22);
+   cout<<"TOTAL";  gotoxy(50,22);cout<<"=";
+
+}
+
+//**********************************************************************************
+//                 M A I N    F U N C T I O N
+//************************************************************************************I
+
+//****************************************************************************************
+
+void choice()
+{
+ cout<<"\n\n What do you want to do??????\n";
+ cout<<"\n1.Enter book details\n2.Visit collection\n3.purchase\n4.Exit\n";
+ int ch;
+ cin>>ch;
+ switch(ch)
+ {
+  case 1: bookentry();
+	  break;
+  case 2: bookdetail();  choice();
+	 break;
+  case 3: purchase();
+	  break;
+  case 4: cout<<"T H A N K   Y O U    F O R   C O M I N G ";
+	      exit(0);
+    default: cout<<"Thank you";
+   }
+}
+//********************************************************************************
+//              B O O K       E N T R Y
+//************************************************************************************
+
+void bookentry()
+{ clrscr();
+char chh;
+ofstream o1("bookshop.dbf",ios::binary|ios::out|ios::app);
+if(!o1)
+ {cout<<"\n file not open";
+  exit(0);
+  }
+ else
+  { cout<<"\n do you want to enter  book details(y/n)";
+    cin>>chh;
+    if(chh=='y'||chh=='Y')
+    {
+    cout<<"\n enter book code\tbook name\tpunlisher name\t writer name\tenter no of copies\n";
+    while(chh=='y'||chh=='Y')
+     {  bb.getdata();
+       o1.write((char*)&bb,sizeof(bb));
+      cout<<"\n do you want to enter more book details";
+      cin>>chh;
+     } }
+      o1.close();
+  }
+
+}
+//***********************************************************************************************************
+//                    S E E   B O O K    D E T A I L S
+//****************************************************************************************************************
+void bookdetail()
+{ clrscr();
+ ifstream i1("bookshop.dbf",ios::binary|ios::in);
+  if(!i1)
+   {cout<<"\n file not open";
+    exit(0);
+    }
+   else
+   { char ch;
+    cout<<"\n\nwould you like to visit our collections(y/n)\n\n";
+    cin>>ch;
+    clrscr();
+     if(ch=='y'||ch=='Y')
+      {  cout<<"\nbkcode\tbook name\tpublisher name\t\twriter name\tno of copies\n";
+	while(!i1.eof())
+		{i1.read((char*)&bb,sizeof(bb));
+		   bb.putdata();
+		}
+
+	 }
+
+     else cout<<"\n\n THANK you";}
+ }
+//******************************************************************************************
+//      W E L C O M E
+//**************************************************************************************
+void welcome()
+{clrscr();
+ int i;
+  for(i=0;i<63;i++)
+    cout<<'*';
+  gotoxy(15,4);
+  cout<<"        W E L C O M E    T O   ";
+  gotoxy(14,6);
+  cout<<" H I N D U S T A A N    B O O K    D E P O T ";
+
+ }
+//*************************************************************************************
+//      P U R C H A S E
+//***************************************************************************************
+void purchase()
+{  clrscr();
+  cc.gatdata();
+  cc.bill();
+ }
+

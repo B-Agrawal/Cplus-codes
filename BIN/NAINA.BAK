@@ -1,0 +1,37 @@
+#include<iostream.h>
+#include<conio.h>
+struct stud
+{int roll;
+int per;
+}s[5];
+void main()
+{clrscr();
+int i,j,n,p=0,temp;
+cout<<"enter size:";
+cin>>n;
+for(i=0;i<n;i++)
+{
+cout<<"enter roll:";
+cin>>s[i].roll;
+cout<<"enter per:";
+cin>>s[i].per;
+}
+for(i=0;i<n;i++)
+{if(s[i].per>90)
+p++;
+}
+
+for(i=0;i<p;i++)
+{for(j=0;j<p-1-i;j++)
+{if(s[j+1].per>s[j].per)
+{temp=s[j].per;
+s[j].per=s[j+1].per;
+s[j+1].per=temp;
+}
+}
+}
+for(i=0;i<p;i++)
+{cout<<s[i].roll<<"   "<<s[i].per<<endl;
+}
+getch();
+}

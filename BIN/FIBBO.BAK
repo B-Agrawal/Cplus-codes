@@ -1,0 +1,18 @@
+#include<iostream.h>
+#include<conoi.h>
+void main()
+{ clrscr();
+ int f=0,s=1,tmp,i=1,n;
+  cin>>n;
+  cout<<f<<" "<<s<<" ";
+
+    while(i<=n)
+   {
+	tmp=ft+st;
+	ft=st;
+	st=tmp;
+	printf(" %d",tmp);
+	i++;
+   }
+   getch();
+   }

@@ -1,0 +1,53 @@
+//program to prepare electricity bill
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+class ebill{	char cname[20];
+		int c_reading;
+		int p_reading;
+		float consd_unit;
+		float billamt;
+		public:
+		void getdata()
+	    {	cout<<"Enter consumer's name\n";
+		gets(cname);
+		cout<<"Enter current reading\n";
+		cin>>c_reading;
+		cout<<"enter previous reading\n";
+		cin>>p_reading;
+		consd_unit=c_reading-p_reading;
+	     if(consd_unit<=100)
+	       billamt=0.75*consd_unit;
+	     else if(consd_unit<=200)
+	       billamt=1.25*consd_unit;
+	     else if(consd_unit<300)
+	       billamt=1.75*consd_unit;
+	     else
+	       billamt=2.25*consd_unit;
+	   }
+
+	    void disp()
+	     {
+	     cout<<"\t"<<cname<<"\t\t"<<c_reading<<"\t\t"<<p_reading<<"\t\t"<<consd_unit<<"\t\t"<<billamt<<"\t\n";
+	     }
+	};
+void main()
+	{	clrscr();
+		ebill e[5];
+		       for(int i=0;i<5;i++)
+			e[i].getdata();
+
+		cout<<"------------------------------------------------------------------------------\n";
+		cout<<" consumer's name  current_reading  previous_reading  consumed_unit  bill_amount\n";
+		cout<<"------------------------------------------------------------------------------\n";
+		cout<<"------------------------------------------------------------------------------\n";
+		  for(i=0;i<5;i++)
+		{	e[i].disp();
+		}
+		getch();
+	}
+
+
+
+
+

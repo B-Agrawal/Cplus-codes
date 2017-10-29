@@ -1,0 +1,12 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdlib.h>
+void main()
+{randomize();
+int n,m=5;
+n=20+random(m);
+for(int i=n;i<=25;i++)
+{ cout<<n<<'*';
+}
+getch();
+}

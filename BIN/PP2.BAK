@@ -1,0 +1,17 @@
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+ clrsr();
+  for(int i=0;i<5;i++)
+    {
+     for(int j=5;j>i;j++)
+      { cout<<" ";
+      }
+     for(int k=5-i;k<=5;k++)
+     { cout<<k;}
+     for(int l=4;l>4-i;l--)
+     {cout<<l;}
+     cout<<endl;
+     }
+getch(); }

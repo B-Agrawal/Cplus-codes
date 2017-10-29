@@ -1,0 +1,35 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+void main()
+{
+ clrscr();
+ int n,c,d,num=1,sp;
+ cout<<"\n ntr no of rows";
+  cin>>n;
+  sp=n-1;
+  for(d=1;d<=n;d++)
+  {
+     num=d;
+      for(c=1;c<=sp;c++)
+      cout<<" ";
+      sp--;
+      for(c=1;c<=d;c++)
+      {
+	cout<<num;
+	    num++;
+	  }
+       num--;
+       num--;
+       for(c=1;c<d;c++)
+     {
+      cout<<num;
+      num--;
+      }
+    cout<<"\n";
+    }
+  getch();
+  }
+
+

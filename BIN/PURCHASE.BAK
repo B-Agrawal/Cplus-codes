@@ -1,0 +1,51 @@
+#include<fstream.h>
+#include<conio.h>
+#include"projectt.h"
+//      P U R C H A S E
+//***************************************************************************************
+void purchase()
+{ char bkname[20],bpname[20],bwname[20],a;int found=1,nm;
+clrscr();
+ifstream i1("bookshop.dbf",ios::in|ios::binary);
+do{
+	cout<<"\n enter the name of book";
+	gets(bkname);
+	cout<<"\n enter the name of book publisher";
+	gets(bpname);
+	cout<<"\n enter the name of book writer";
+	gets(bwname);
+	    i1.seekg(0,ios::beg);
+       while(i1.read((char*)&bb,sizeof(bb)))
+    {
+       if(strcmpi(bb.name,bkname)==0)
+	 {if(strcmpi(bb.pub,bpname)==0)
+	    { if(strcmpi(bb.writer,bwname)==0)
+	       { cout<<"\n enter no of books you want to purchase";
+		cin>>nm;
+	       bb.nob=bb.nob-nm;
+		found=1;
+		  break;
+	       }
+	     }
+	   }
+
+	else
+	   found=0;
+     }
+  if(!found)
+   {cout<<"\n sorry book is not available in the store"; }
+
+    cout<<" \ndo you want to mor books";
+     cin>>a;
+
+    }while(a=='y'||a=='Y');
+
+
+    cout<<"\n thankyou";
+
+ }
+//void main()
+//{clrscr();
+//purchase();
+//getch();
+//}

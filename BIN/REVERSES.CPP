@@ -1,0 +1,27 @@
+#include<fstream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<process.h>
+#include<string.h>
+void main()
+{ char ch[25];   int x;  char s;
+ifstream i1("story.text",ios::in);
+  if(!i1)
+   {cout<<"\n file not exist";
+    exit(0);
+    }
+  else
+    { while(!i1.eof())
+       {  i1.getline(ch,25);
+	     x =strlen(ch);
+	 for(int l=x-1;l>=0;l--)
+	     { s=ch[l];
+		cout<<s;
+		}
+	 }
+       }
+   getch();
+   }
+
+
+

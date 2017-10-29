@@ -1,0 +1,57 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+struct emp{
+char name[25];
+float basic,DA,HRA,PF,NETPAY;
+} e[5];
+
+void enter()
+{
+for(int i=0; i<5; i++)
+{
+cout<<"enter the name of the employee"<<i+1;
+gets(e[i].name);
+cout<<"\nenter the basic pay";
+cin>>e[i].basic;
+e[i].DA=(30*e[i].basic)/100;
+e[i].HRA=(10*e[i].basic)/100;
+e[i].PF=(10*e[i].basic+e[i].DA)/100;
+e[i].NETPAY=e[i].DA+e[i].HRA+e[i].basic-e[i].PF;
+}
+}
+void disp()
+{
+for(int k=0; k<5; k++)
+{
+cout<<"\t"<<k+1<<"\t"<<e[k].name<<"\t"<<e[k].basic<<"\t"<<e[k].HRA<<"\t"<<e[k].PF<<"\t"<<e[k].NETPAY;
+}
+}
+
+void main()
+{
+clrscr();
+cout<<"\t\t\t\tSALARY REGISTER";
+enter();
+cout<<"sno \tname \tbasic \tHRA \ttotalpf \tNETPAY";
+disp();
+getch();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

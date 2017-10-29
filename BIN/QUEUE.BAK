@@ -1,0 +1,33 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+struct queue
+{
+ char name[20];
+ int age;
+ queue *next;
+ }*front=NULL,*rear=NULL,*np=NULL;
+
+ void display(queue *np)
+ {     while(np)
+   {cout<<np->name<<'\n';
+    cout<<np->age;
+      np=np->next;
+      }
+    }
+ void main()
+ {clrscr();
+ np=new queue;
+ cout<<"\n entre ";
+ gets(np->name);
+ cin>>np->age;
+  np->next=NULL;
+  if(front==NULL)
+  { front=rear=np;
+   }
+     else
+      { rear->next=np;}
+   display(np);
+   getch();
+   }
+

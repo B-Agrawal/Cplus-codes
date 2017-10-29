@@ -1,0 +1,24 @@
+#include<iostream.h>
+#include<conio.h>
+#include"bill.h"
+#include<stdio.h>
+
+void main()
+{clrscr();
+char nm[20];
+int pno,dd,mm,yy;
+cout<<"\n enter name ";
+gets(nm);
+cout<<"\n pno";
+cin>>pno;
+cout<<"\n enter date";
+cin>>dd>>mm>>yy;
+billing();
+  gotoxy(12,5);
+  cout<<nm;
+  gotoxy(12,7);
+   cout<<pno;
+ gotoxy(50,4);
+    cout<<dd<<"/"<<mm<<"/"<<yy;
+getch();
+}

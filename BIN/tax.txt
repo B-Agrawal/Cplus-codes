@@ -1,0 +1,42 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+class info
+{
+char name[30];
+long int total;
+long int tax;
+long int calc()
+{if(total<=35000)
+tax=0;
+else if(total>=35000 && total<=60000)
+tax=(20/100.0)*total;
+else if(total>=60001 && total<=12000)
+tax=(30/100.0)*total;
+else if(total>12000)
+tax=(40/100.0)*total;
+return tax  ;
+}
+public:   void input()
+{cout<<"Enter name of the employee :";cout<<endl;
+gets(name);
+cout<<"Enter annual income :";cout<<endl;
+cin>>total;
+}
+void display()
+{cout<<"Name :"; cout<<endl;
+cout<<name;      cout<<endl;
+cout<<"Total income :";     cout<<endl;
+cout<<total;                cout<<endl;
+calc();
+cout<<"Tax to be paid is :";   cout<<endl;
+cout<<tax;
+}};
+void main()
+{
+clrscr();
+info i;
+i.input();
+i.display();
+getch();
+}

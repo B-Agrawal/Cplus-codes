@@ -1,0 +1,62 @@
+#include<iostream.h>
+#include<conio.h>
+static int  dm[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+int dd,mm,yy;
+unsigned short dc;
+int isleap(int y)
+{return ((y%4==0&&y%100!=0)||y%400==0);}
+
+class date
+{public:
+ // int d,m,y;
+//   void olddate(int d,int m,int y);
+   void nextdate(int);
+   void newdate(int y);
+   };
+/*void date::olddate(int d,int m,int y)
+{
+  m<1?m=1:0;
+  m>12?m=12:0;
+  d<1?d=1:0;
+  d>dm[m]?d=dm[m]:0;
+  if(isleap(y))
+     dm[m]=29;
+   else dm[m]=28;
+dd=d;mm=m;yy=y;
+} */
+
+void date::nextdate(int n)
+{	dd+=n;
+       //	dc++;
+	if(dd>dm[mm])
+	  { dd-=dm[mm];
+	    mm+=1;
+	    if(mm>12)
+		{  mm-=12;yy+=1;
+		   if(isleap(yy)&&dm[mm]==2)
+		    {dm[mm]=29;}
+		    else {dm[mm]=28;}
+		 }
+	    }
+ }
+void date::newdate(int n)
+{
+
+//for(i=0;i<x;i++)
+ nextdate(n);
+}
+void main()
+{clrscr();
+date d1; int xx,zz,yyyy,no;
+cout<<"\nenter old date (dd/mm/yyyy) " ;
+cin>>xx>>zz>>yyyy;
+cout<<"\n enter no days to increased and give new:";
+cin>>no;
+dd=xx;mm=zz;yy=yyyy;
+//d1.olddate(xx,zz,yyyy);
+d1.newdate(no);
+dc=0;
+cout<<"\n\nNEW DATE \n";
+cout<<dd<<'/'<<mm<<'/'<<yy;
+getch();
+}

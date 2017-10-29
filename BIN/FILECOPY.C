@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+ int c;
+ clrscr();
+ c=getchar();
+ while(c!=eof())
+ { putchar(c);
+ c=getchar();
+ }
+ getch();
+ }

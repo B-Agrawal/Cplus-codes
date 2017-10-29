@@ -1,0 +1,81 @@
+#include<iostream.h>
+#include<conio.h>
+#include<process.h>
+class stack
+{
+ char nm[20];
+ int rno;
+ stack *link;
+ public:
+ void push();
+ void pop();
+ void display(stack *top);
+ }*top=NULL;//,*np=NULL;
+ void stack::push()
+ {
+   stack *np=new stack;
+   cout<<"\n entre nm,rno";
+   cin>>np->nm;
+   cin>>np->rno;
+   np->link=NULL;
+   if(top==NULL)
+    {
+      top=np;
+      }
+    else
+     {
+       np->link=top;
+       top=np;
+       }
+    }
+ void stack::pop()
+ {
+   stack *tmp=NULL;
+   tmp=top;
+   if(top==NULL)
+    cout<<"\n underflow";
+    else
+    { cout<<"\n delet";
+     top=top->link;
+     delete tmp;
+     }
+   }
+ void stack::display(stack *top)
+ {
+   if(top==NULL)
+     cout<<"\n emtru";
+     else
+      {  stack *np=top;
+	 while(np)
+	  { cout<<"\n"<<np->nm<<np->rno;
+	  np=np->link;
+	    }
+	  }
+     }
+  void main()
+  {
+   clrscr();
+     stack st;
+    cout<<" ch \t1.\t2.\t3.\t4";
+    int ch;
+    cin>>ch;
+    do{
+    switch(ch)
+    {
+     case 1:st.push();
+      break;
+      case 2: st.pop();
+      break;
+      case 3:st.display(top);
+      break;
+      case 4:exit(0);
+      default:cout<<"oop!!!!";
+      }
+   }while(ch!=4);
+   getch();
+   }
+
+
+
+
+
